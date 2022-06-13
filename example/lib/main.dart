@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MSHCheckbox Example',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(title: const Text('MSHCheckbox Example')),
         body: Center(
           child: MSHCheckbox(
-            size: 210,
+            size: 100,
             value: isChecked,
             checkedColor: Colors.blue,
             uncheckedColor: Colors.black12,
