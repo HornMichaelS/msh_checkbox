@@ -1,5 +1,5 @@
 name: msh_checkbox
-description: An animated checkbox, inspired by BEMCheckbox for iOS
+description: An animated checkbox, inspired by BEMCheckbox for iOS, using an API similar to Flutter's own Checkbox.
 version: 1.0.0
 repository: https://github.com/HornMichaelS/msh_checkbox
 
