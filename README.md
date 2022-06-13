@@ -1,5 +1,7 @@
 # msh_checkbox
 
+[![pub package](https://img.shields.io/pub/v/msh_checkbox.svg)](https://pub.dev/packages/msh_checkbox) [![pub points](https://badges.bar/msh_checkbox/pub%20points)](https://pub.dev/packages/msh_checkbox/score) [![popularity](https://badges.bar/msh_checkbox/popularity)](https://pub.dev/packages/msh_checkbox/score) [![likes](https://badges.bar/msh_checkbox/likes)](https://pub.dev/packages/msh_checkbox/score)
+
 A customizable circular checkbox which plays an animation when checked or unchecked.
 
 ![Untitled](https://user-images.githubusercontent.com/6050603/173438640-5990e369-2b13-48e4-aae9-4de6876cb484.gif)
