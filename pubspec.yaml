@@ -1,6 +1,6 @@
 name: msh_checkbox
 description: An animated checkbox, inspired by BEMCheckbox for iOS
-version: 0.0.1
+version: 1.0.0
 homepage:
 
 environment:
