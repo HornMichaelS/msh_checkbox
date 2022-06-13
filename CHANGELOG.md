@@ -1,3 +1,9 @@
+## [1.0.3] - 2022-06-13
+
+### Fixed
+
+* Fixed sizing issue (widget was compressed to zero size in some contexts).
+
 ## [1.0.2] - 2022-06-13
 
 ### Changed
@@ -14,6 +20,7 @@
 
 * Initial release
 
+[1.0.3]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/HornMichaelS/msh_checkbox/releases/tag/1.0.0

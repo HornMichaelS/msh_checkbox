@@ -94,6 +94,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
         alignment: Alignment.center,
         children: [
           SizedBox(
+            height: widget.size + _strokeWidth,
             width: widget.size + _strokeWidth,
             child: Container(
               decoration: BoxDecoration(
@@ -107,37 +108,41 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               ),
             ),
           ),
-          AnimatedBuilder(
-            animation: animationController,
-            builder: (context, child) {
-              return Stack(
-                alignment: const Alignment(0, -0.15),
-                children: [
-                  Arc(
-                    color: widget.isDisabled
-                        ? Colors.transparent
-                        : widget.checkedColor,
-                    startAngle: pi / 4,
-                    sweepAngle: animationController
-                        .drive(CurveTween(curve: Curves.easeInOutCubic))
-                        .drive(Tween(begin: 0.0, end: 2 * pi))
-                        .value,
-                    strokeWidth: _strokeWidth,
-                    size: widget.size,
-                  ),
-                  Check(
-                    color: widget.isDisabled
-                        ? widget.disabledColor
-                        : widget.checkedColor,
-                    size: widget.size * 0.4,
-                    strokeWidth: _strokeWidth,
-                    fillPercentage: animationController
-                        .drive(CurveTween(curve: Curves.easeInOutCubic))
-                        .value,
-                  ),
-                ],
-              );
-            },
+          SizedBox(
+            height: widget.size,
+            width: widget.size,
+            child: AnimatedBuilder(
+              animation: animationController,
+              builder: (context, child) {
+                return Stack(
+                  alignment: const Alignment(0, -0.15),
+                  children: [
+                    Arc(
+                      color: widget.isDisabled
+                          ? Colors.transparent
+                          : widget.checkedColor,
+                      startAngle: pi / 4,
+                      sweepAngle: animationController
+                          .drive(CurveTween(curve: Curves.easeInOutCubic))
+                          .drive(Tween(begin: 0.0, end: 2 * pi))
+                          .value,
+                      strokeWidth: _strokeWidth,
+                      size: widget.size,
+                    ),
+                    Check(
+                      color: widget.isDisabled
+                          ? widget.disabledColor
+                          : widget.checkedColor,
+                      size: widget.size * 0.4,
+                      strokeWidth: _strokeWidth,
+                      fillPercentage: animationController
+                          .drive(CurveTween(curve: Curves.easeInOutCubic))
+                          .value,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
