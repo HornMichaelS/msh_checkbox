@@ -1,7 +1,7 @@
 name: msh_checkbox
 description: An animated checkbox, inspired by BEMCheckbox for iOS
 version: 1.0.0
-homepage:
+repository: https://github.com/HornMichaelS/msh_checkbox
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
