@@ -1,13 +1,11 @@
+# msh_checkbox
+
 A customizable circular checkbox which plays an animation when checked or unchecked.
 
 ## Features
 
 As of this version of the package, MSHCheckbox only has one style and animation available,
 however the size, colors, and animation duration are all customizable.
-
-### Example:
-
-
 
 ## Getting started
 
@@ -20,11 +18,31 @@ flutter pub add msh_checkbox
 ## Usage
 
 ```dart
-const like = 'sample';
+class Example extends StatefulWidget {
+  Example({Key? key}): super(key: key);
+
+  @override
+  State<Example> createState() => _ExampleState();
+}
+
+class _ExampleState extends State<Example> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: MSHCheckbox(
+        size: 60,
+        value: isChecked,
+        checkedColor: Colors.blue,
+        uncheckedColor: Colors.black12,
+        onChanged: (selected) {
+          setState(() {
+            isChecked = selected;
+          });
+        },
+      ),
+    );
+  }
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
