@@ -1,10 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
 
-import 'package:msh_checkbox/src/painting/check.dart';
-
-import 'painting/arc.dart';
+import 'checkboxes/filled_checkbox.dart';
+import 'msh_checkbox_style.dart';
 
 ///
 /// A circular checkbox which nicely animates changes to its value.
@@ -21,12 +19,13 @@ class MSHCheckbox extends StatefulWidget {
     required this.value,
     this.isDisabled = false,
     this.checkedColor = Colors.blue,
-    this.uncheckedColor = const Color.fromARGB(255, 189, 189, 189),
-    this.disabledColor = const Color(0x20000000),
+    this.uncheckedColor = const Color(0xFFCCCCCC),
+    this.disabledColor = const Color(0xFFCCCCCC),
     this.size = 40,
     this.duration = const Duration(
       milliseconds: 700,
     ),
+    this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
   }) : super(key: key);
 
@@ -50,6 +49,9 @@ class MSHCheckbox extends StatefulWidget {
 
   /// The duration of the animation which plays when [value] changes.
   final Duration duration;
+
+  /// The style of the animation and the check.
+  final MSHCheckboxStyle style;
 
   /// Called when the value of the checkbox should change.
   final void Function(bool selected) onChanged;
@@ -108,44 +110,58 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               ),
             ),
           ),
-          SizedBox(
-            height: widget.size,
-            width: widget.size,
-            child: AnimatedBuilder(
-              animation: animationController,
-              builder: (context, child) {
-                return Stack(
-                  alignment: const Alignment(0, -0.15),
-                  children: [
-                    Arc(
-                      color: widget.isDisabled
-                          ? Colors.transparent
-                          : widget.checkedColor,
-                      startAngle: pi / 4,
-                      sweepAngle: animationController
-                          .drive(CurveTween(curve: Curves.easeInOutCubic))
-                          .drive(Tween(begin: 0.0, end: 2 * pi))
-                          .value,
-                      strokeWidth: _strokeWidth,
-                      size: widget.size,
-                    ),
-                    Check(
-                      color: widget.isDisabled
-                          ? widget.disabledColor
-                          : widget.checkedColor,
-                      size: widget.size * 0.4,
-                      strokeWidth: _strokeWidth,
-                      fillPercentage: animationController
-                          .drive(CurveTween(curve: Curves.easeInOutCubic))
-                          .value,
-                    ),
-                  ],
-                );
-              },
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: widget.size,
+              minWidth: widget.size,
             ),
+            // width: widget.size,
+            // height: widget.size,
+            child: getCheckbox(),
           ),
         ],
       ),
+    );
+  }
+
+  Widget getCheckbox() {
+    switch (widget.style) {
+      case MSHCheckboxStyle.stroke:
+        return StrokeCheckbox(
+          isDisabled: widget.isDisabled,
+          checkedColor: widget.checkedColor,
+          disabledColor: widget.disabledColor,
+          uncheckedColor: widget.uncheckedColor,
+          animationController: animationController,
+          strokeWidth: _strokeWidth,
+          size: widget.size,
+        );
+      case MSHCheckboxStyle.filled:
+        return FilledCheckbox(
+          isDisabled: widget.isDisabled,
+          checkedColor: widget.checkedColor,
+          disabledColor: widget.disabledColor,
+          uncheckedColor: widget.uncheckedColor,
+          animationController: animationController,
+          strokeWidth: _strokeWidth,
+          size: widget.size,
+        );
+      case MSHCheckboxStyle.bounce:
+        // TODO: Handle this case.
+        break;
+      case MSHCheckboxStyle.fade:
+        // TODO: Handle this case.
+        break;
+    }
+
+    return StrokeCheckbox(
+      isDisabled: widget.isDisabled,
+      checkedColor: widget.checkedColor,
+      disabledColor: widget.disabledColor,
+      uncheckedColor: widget.uncheckedColor,
+      animationController: animationController,
+      strokeWidth: _strokeWidth,
+      size: widget.size,
     );
   }
 
