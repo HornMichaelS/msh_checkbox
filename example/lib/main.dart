@@ -132,11 +132,11 @@ extension StyleName on MSHCheckboxStyle {
     switch (this) {
       case MSHCheckboxStyle.stroke:
         return "Stroke";
-      case MSHCheckboxStyle.filled:
-        return "Filled";
-      case MSHCheckboxStyle.bounce:
-        return "Bounce";
-      case MSHCheckboxStyle.fade:
+      case MSHCheckboxStyle.fillScaleColor:
+        return "Scale Color";
+      case MSHCheckboxStyle.fillScaleCheck:
+        return "Scale Check";
+      case MSHCheckboxStyle.fillFade:
         return "Fade";
     }
   }

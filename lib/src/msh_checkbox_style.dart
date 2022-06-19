@@ -3,22 +3,22 @@ enum MSHCheckboxStyle {
   /// Draws a circle and a checkmark inside.
   stroke,
 
-  /// Bounces in the fill color for the circle, while fading in the
+  /// Scales in the fill color (from the center) for the circle, while fading in the
   /// checkmark.
   ///
   /// The fill color is given by [MSHCheckbox.checkedColor], and the checkmark
   /// will be colored white.
-  filled,
+  fillScaleColor,
 
-  /// Fades in a filled circle, while bouncing in the checkmark.
+  /// Fades in a filled circle, while scaling in the checkmark.
   ///
   /// The fill color is given by [MSHCheckbox.checkedColor], and the checkmark
   /// will be colored white.
-  bounce,
+  fillScaleCheck,
 
-  /// Fades in both a filled circle and a checkmark - No bounce animation.
+  /// Fades in both a filled circle and a checkmark - No scaling animation.
   ///
   /// The fill color is given by [MSHCheckbox.checkedColor], and the checkmark
   /// will be colored white.
-  fade,
+  fillFade,
 }

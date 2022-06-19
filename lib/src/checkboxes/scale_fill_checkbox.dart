@@ -3,8 +3,8 @@ import 'package:msh_checkbox/src/painting/check.dart';
 
 import 'checkbox_base.dart';
 
-class FilledCheckbox extends CheckboxBase {
-  const FilledCheckbox({
+class ScaleFillCheckbox extends CheckboxBase {
+  const ScaleFillCheckbox({
     Key? key,
     required bool isDisabled,
     required Color checkedColor,
