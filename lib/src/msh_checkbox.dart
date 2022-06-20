@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msh_checkbox/src/checkboxes/fade_checkbox.dart';
 import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
 
 import 'checkboxes/scale_check_checkbox.dart';
@@ -158,19 +159,16 @@ class _MSHCheckboxState extends State<MSHCheckbox>
           size: widget.size,
         );
       case MSHCheckboxStyle.fillFade:
-        // TODO: Handle this case.
-        break;
+        return FadeCheckbox(
+          isDisabled: widget.isDisabled,
+          checkedColor: widget.checkedColor,
+          disabledColor: widget.disabledColor,
+          uncheckedColor: widget.uncheckedColor,
+          animationController: animationController,
+          strokeWidth: _strokeWidth,
+          size: widget.size,
+        );
     }
-
-    return StrokeCheckbox(
-      isDisabled: widget.isDisabled,
-      checkedColor: widget.checkedColor,
-      disabledColor: widget.disabledColor,
-      uncheckedColor: widget.uncheckedColor,
-      animationController: animationController,
-      strokeWidth: _strokeWidth,
-      size: widget.size,
-    );
   }
 
   @override
