@@ -1,3 +1,9 @@
+## [1.1.1] - 2022-06-20
+
+### Changed
+
+* Gave each animation style a different default animation duration, each suited to the particular animation.
+
 ## [1.1.0] - 2022-06-20
 
 ### Added
@@ -35,6 +41,7 @@
 
 * Initial release
 
+[1.1.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.3...1.1.0
 [1.0.3]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.1...1.0.2
