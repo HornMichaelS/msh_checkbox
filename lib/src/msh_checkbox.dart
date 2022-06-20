@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msh_checkbox/src/checkboxes/checkbox_base.dart';
 import 'package:msh_checkbox/src/checkboxes/fade_checkbox.dart';
 import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
 
@@ -24,9 +25,7 @@ class MSHCheckbox extends StatefulWidget {
     this.uncheckedColor = const Color(0xFFCCCCCC),
     this.disabledColor = const Color(0xFFCCCCCC),
     this.size = 40,
-    this.duration = const Duration(
-      milliseconds: 700,
-    ),
+    this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
   }) : super(key: key);
@@ -50,7 +49,7 @@ class MSHCheckbox extends StatefulWidget {
   final double size;
 
   /// The duration of the animation which plays when [value] changes.
-  final Duration duration;
+  final Duration? duration;
 
   /// The style of the animation and the check.
   final MSHCheckboxStyle style;
@@ -68,14 +67,31 @@ class _MSHCheckboxState extends State<MSHCheckbox>
 
   late final animationController = AnimationController(
     vsync: this,
-    duration: widget.duration,
+    duration: duration,
   );
+
+  Duration get duration {
+    if (widget.duration != null) {
+      return widget.duration!;
+    }
+
+    switch (widget.style) {
+      case MSHCheckboxStyle.stroke:
+        return const Duration(milliseconds: 700);
+      case MSHCheckboxStyle.fillScaleColor:
+        return const Duration(milliseconds: 400);
+      case MSHCheckboxStyle.fillScaleCheck:
+        return const Duration(milliseconds: 500);
+      case MSHCheckboxStyle.fillFade:
+        return const Duration(milliseconds: 300);
+    }
+  }
 
   @override
   void didUpdateWidget(covariant MSHCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    animationController.duration = widget.duration;
+    animationController.duration = duration;
 
     if (widget.value != oldWidget.value) {
       if (widget.value) {
@@ -126,7 +142,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
     );
   }
 
-  Widget _getCheckbox() {
+  CheckboxBase _getCheckbox() {
     switch (widget.style) {
       case MSHCheckboxStyle.stroke:
         return StrokeCheckbox(
