@@ -9,8 +9,11 @@ A customizable circular checkbox which plays an animation when checked or unchec
 
 ## Features
 
-As of this version of the package, MSHCheckbox only has one style and animation available,
-however the size, colors, and animation duration are all customizable.
+* Choose from 4 animation/visual styles (stroke, scale in checkmark, scale in background, fade in).
+
+* Customize colors for active, inactive and disabled states.
+  
+* Customize the animation duration.
 
 ## Getting started
 
@@ -40,7 +43,7 @@ class _ExampleState extends State<Example> {
         size: 60,
         value: isChecked,
         checkedColor: Colors.blue,
-        uncheckedColor: Colors.black12,
+        style: MSHCheckboxStyle.stroke,
         onChanged: (selected) {
           setState(() {
             isChecked = selected;

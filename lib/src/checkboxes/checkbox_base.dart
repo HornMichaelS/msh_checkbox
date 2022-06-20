@@ -5,10 +5,10 @@ abstract class CheckboxBase extends StatelessWidget {
   final Color checkedColor;
   final Color disabledColor;
   final Color uncheckedColor;
-  final AnimationController animationController; 
+  final AnimationController animationController;
   final double strokeWidth;
   final double size;
-  
+
   const CheckboxBase({
     Key? key,
     required this.isDisabled,

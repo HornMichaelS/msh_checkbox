@@ -119,14 +119,14 @@ class _MSHCheckboxState extends State<MSHCheckbox>
             ),
             // width: widget.size,
             // height: widget.size,
-            child: getCheckbox(),
+            child: _getCheckbox(),
           ),
         ],
       ),
     );
   }
 
-  Widget getCheckbox() {
+  Widget _getCheckbox() {
     switch (widget.style) {
       case MSHCheckboxStyle.stroke:
         return StrokeCheckbox(
