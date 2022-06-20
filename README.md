@@ -4,8 +4,7 @@
 
 A customizable circular checkbox which plays an animation when checked or unchecked.
 
-![Untitled](https://user-images.githubusercontent.com/6050603/173438640-5990e369-2b13-48e4-aae9-4de6876cb484.gif)
-
+![Checkbox Examples](https://i.giphy.com/media/ivackQaDWjMmfZPqwc/giphy.gif)
 
 ## Features
 
