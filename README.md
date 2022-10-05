@@ -1,6 +1,6 @@
 # msh_checkbox
 
-[![pub package](https://img.shields.io/pub/v/msh_checkbox.svg)](https://pub.dev/packages/msh_checkbox) [![pub points](https://badges.bar/msh_checkbox/pub%20points)](https://pub.dev/packages/msh_checkbox/score) [![popularity](https://badges.bar/msh_checkbox/popularity)](https://pub.dev/packages/msh_checkbox/score) [![likes](https://badges.bar/msh_checkbox/likes)](https://pub.dev/packages/msh_checkbox/score)
+[![pub package](https://img.shields.io/pub/v/msh_checkbox.svg)](https://pub.dev/packages/msh_checkbox) [![pub points](https://img.shields.io/pub/points/msh_checkbox?logo=dart)](https://pub.dev/packages/msh_checkbox/score) [![popularity](https://img.shields.io/pub/popularity/msh_checkbox?logo=dart)](https://pub.dev/packages/msh_checkbox/score) [![likes](https://img.shields.io/pub/likes/msh_checkbox?logo=dart)](https://pub.dev/packages/msh_checkbox/score)
 
 A customizable circular checkbox which plays an animation when checked or unchecked.
 
