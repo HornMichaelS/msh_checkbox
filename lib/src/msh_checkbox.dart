@@ -88,6 +88,14 @@ class _MSHCheckboxState extends State<MSHCheckbox>
   }
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.value) {
+      animationController.value = 1;
+    }
+  }
+
+  @override
   void didUpdateWidget(covariant MSHCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
 
