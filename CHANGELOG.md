@@ -1,3 +1,9 @@
+## [1.1.2] - 2022-11-08
+
+### Fixed
+
+* Checkbox should be checked on the initial build if initial value is true (thanks @pitriq!)
+
 ## [1.1.1] - 2022-06-20
 
 ### Changed
@@ -41,6 +47,7 @@
 
 * Initial release
 
+[1.1.2]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.3...1.1.0
 [1.0.3]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.2...1.0.3
