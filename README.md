@@ -53,3 +53,9 @@ class _ExampleState extends State<Example> {
   }
 }
 ```
+
+## Support
+
+I know it's a small and simple widget, but if you'd like to support it is certainly appreciated!
+
+<a href="https://www.buymeacoffee.com/hornmichaels" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
