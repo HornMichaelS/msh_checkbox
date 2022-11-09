@@ -1,41 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/src/painting/check.dart';
 
-import 'checkbox_base.dart';
+import 'msh_checkbox_base.dart';
 
-class ScaleCheckCheckbox extends CheckboxBase {
-  const ScaleCheckCheckbox({
-    Key? key,
-    required bool isDisabled,
-    required Color checkedColor,
-    required Color disabledColor,
-    required Color uncheckedColor,
-    required AnimationController animationController,
-    required double strokeWidth,
-    required double size,
-  }) : super(
-          key: key,
-          isDisabled: isDisabled,
-          checkedColor: checkedColor,
-          disabledColor: disabledColor,
-          uncheckedColor: uncheckedColor,
-          animationController: animationController,
-          strokeWidth: strokeWidth,
-          size: size,
-        );
+class ScaleCheckCheckbox extends StatelessWidget {
+  final MSHCheckboxBase parent;
+
+  const ScaleCheckCheckbox({Key? key, required this.parent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final fadeAnimation = animationController.drive(CurveTween(
+    final fadeAnimation = parent.animation.drive(CurveTween(
       curve: Curves.easeOutCubic,
     ));
 
-    final checkAnimation = animationController.drive(CurveTween(
+    final checkAnimation = parent.animation.drive(CurveTween(
       curve: Curves.easeOutBack,
     ));
 
     return AnimatedBuilder(
-      animation: animationController,
+      animation: parent.animation,
       builder: (context, child) {
         return Stack(
           alignment: Alignment.center,
@@ -43,11 +27,13 @@ class ScaleCheckCheckbox extends CheckboxBase {
             Opacity(
               opacity: fadeAnimation.value,
               child: Container(
-                height: size + strokeWidth,
-                width: size + strokeWidth,
+                height: parent.size + parent.strokeWidth,
+                width: parent.size + parent.strokeWidth,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isDisabled ? disabledColor : checkedColor,
+                  color: parent.isDisabled
+                      ? parent.disabledColor
+                      : parent.checkedColor,
                 ),
               ),
             ),
@@ -60,8 +46,8 @@ class ScaleCheckCheckbox extends CheckboxBase {
               child: Check(
                 color: Colors.white,
                 fillPercentage: 1,
-                size: size * 0.4,
-                strokeWidth: strokeWidth,
+                size: parent.size * 0.4,
+                strokeWidth: parent.strokeWidth,
               ),
             ),
           ],

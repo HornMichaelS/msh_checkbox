@@ -4,52 +4,39 @@ import 'package:flutter/material.dart';
 
 import '../painting/arc.dart';
 import '../painting/check.dart';
-import 'checkbox_base.dart';
+import 'msh_checkbox_base.dart';
 
-class StrokeCheckbox extends CheckboxBase {
-  const StrokeCheckbox({
-    Key? key,
-    required bool isDisabled,
-    required Color checkedColor,
-    required Color disabledColor,
-    required Color uncheckedColor,
-    required AnimationController animationController,
-    required double strokeWidth,
-    required double size,
-  }) : super(
-          key: key,
-          isDisabled: isDisabled,
-          checkedColor: checkedColor,
-          disabledColor: disabledColor,
-          uncheckedColor: uncheckedColor,
-          animationController: animationController,
-          strokeWidth: strokeWidth,
-          size: size,
-        );
+class StrokeCheckbox extends StatelessWidget {
+  final MSHCheckboxBase parent;
+
+  const StrokeCheckbox({Key? key, required this.parent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
+      animation: parent.animation,
       builder: (context, child) {
         return Stack(
           alignment: Alignment.center,
           children: [
             Arc(
-              color: isDisabled ? Colors.transparent : checkedColor,
+              color:
+                  parent.isDisabled ? Colors.transparent : parent.checkedColor,
               startAngle: pi / 4,
-              sweepAngle: animationController
+              sweepAngle: parent.animation
                   .drive(CurveTween(curve: Curves.easeInOutCubic))
                   .drive(Tween(begin: 0.0, end: 2 * pi))
                   .value,
-              strokeWidth: strokeWidth,
-              size: size,
+              strokeWidth: parent.strokeWidth,
+              size: parent.size,
             ),
             Check(
-              color: isDisabled ? disabledColor : checkedColor,
-              size: size * 0.4,
-              strokeWidth: strokeWidth,
-              fillPercentage: animationController
+              color: parent.isDisabled
+                  ? parent.disabledColor
+                  : parent.checkedColor,
+              size: parent.size * 0.4,
+              strokeWidth: parent.strokeWidth,
+              fillPercentage: parent.animation
                   .drive(CurveTween(curve: Curves.easeInOutCubic))
                   .value,
             ),

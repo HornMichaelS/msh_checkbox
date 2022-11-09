@@ -1,33 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/src/painting/check.dart';
 
-import 'checkbox_base.dart';
+import 'msh_checkbox_base.dart';
 
-class ScaleFillCheckbox extends CheckboxBase {
-  const ScaleFillCheckbox({
-    Key? key,
-    required bool isDisabled,
-    required Color checkedColor,
-    required Color disabledColor,
-    required Color uncheckedColor,
-    required AnimationController animationController,
-    required double strokeWidth,
-    required double size,
-  }) : super(
-          key: key,
-          isDisabled: isDisabled,
-          checkedColor: checkedColor,
-          disabledColor: disabledColor,
-          uncheckedColor: uncheckedColor,
-          animationController: animationController,
-          strokeWidth: strokeWidth,
-          size: size,
-        );
+class ScaleFillCheckbox extends StatelessWidget {
+  final MSHCheckboxBase parent;
+
+  const ScaleFillCheckbox({Key? key, required this.parent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final animation = animationController.drive(
-      Tween(begin: 0.0, end: size + strokeWidth).chain(
+    final animation = parent.animation.drive(
+      Tween(begin: 0.0, end: parent.size + parent.strokeWidth).chain(
         CurveTween(
           curve: Curves.easeOutCirc,
         ),
@@ -35,7 +19,7 @@ class ScaleFillCheckbox extends CheckboxBase {
     );
 
     return AnimatedBuilder(
-      animation: animationController,
+      animation: animation,
       builder: (context, child) {
         return Stack(
           alignment: Alignment.center,
@@ -45,16 +29,18 @@ class ScaleFillCheckbox extends CheckboxBase {
               width: animation.value,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: isDisabled ? disabledColor : checkedColor,
+                color: parent.isDisabled
+                    ? parent.disabledColor
+                    : parent.checkedColor,
               ),
             ),
             Opacity(
-              opacity: animationController.value,
+              opacity: parent.animation.value,
               child: Check(
                 color: Colors.white,
                 fillPercentage: 1,
-                size: size * 0.4,
-                strokeWidth: strokeWidth,
+                size: parent.size * 0.4,
+                strokeWidth: parent.strokeWidth,
               ),
             ),
           ],

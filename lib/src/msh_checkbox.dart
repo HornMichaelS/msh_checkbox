@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:msh_checkbox/src/checkboxes/checkbox_base.dart';
-import 'package:msh_checkbox/src/checkboxes/fade_checkbox.dart';
-import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
-
-import 'checkboxes/scale_check_checkbox.dart';
-import 'checkboxes/scale_fill_checkbox.dart';
+import 'package:msh_checkbox/src/checkboxes/msh_checkbox_base.dart';
 import 'msh_checkbox_style.dart';
 
 ///
@@ -143,56 +138,20 @@ class _MSHCheckboxState extends State<MSHCheckbox>
             ),
             // width: widget.size,
             // height: widget.size,
-            child: _getCheckbox(),
+            child: MSHCheckboxBase(
+              style: widget.style,
+              isDisabled: widget.isDisabled,
+              checkedColor: widget.checkedColor,
+              disabledColor: widget.disabledColor,
+              uncheckedColor: widget.uncheckedColor,
+              animation: animationController,
+              strokeWidth: _strokeWidth,
+              size: widget.size,
+            ),
           ),
         ],
       ),
     );
-  }
-
-  CheckboxBase _getCheckbox() {
-    switch (widget.style) {
-      case MSHCheckboxStyle.stroke:
-        return StrokeCheckbox(
-          isDisabled: widget.isDisabled,
-          checkedColor: widget.checkedColor,
-          disabledColor: widget.disabledColor,
-          uncheckedColor: widget.uncheckedColor,
-          animationController: animationController,
-          strokeWidth: _strokeWidth,
-          size: widget.size,
-        );
-      case MSHCheckboxStyle.fillScaleColor:
-        return ScaleFillCheckbox(
-          isDisabled: widget.isDisabled,
-          checkedColor: widget.checkedColor,
-          disabledColor: widget.disabledColor,
-          uncheckedColor: widget.uncheckedColor,
-          animationController: animationController,
-          strokeWidth: _strokeWidth,
-          size: widget.size,
-        );
-      case MSHCheckboxStyle.fillScaleCheck:
-        return ScaleCheckCheckbox(
-          isDisabled: widget.isDisabled,
-          checkedColor: widget.checkedColor,
-          disabledColor: widget.disabledColor,
-          uncheckedColor: widget.uncheckedColor,
-          animationController: animationController,
-          strokeWidth: _strokeWidth,
-          size: widget.size,
-        );
-      case MSHCheckboxStyle.fillFade:
-        return FadeCheckbox(
-          isDisabled: widget.isDisabled,
-          checkedColor: widget.checkedColor,
-          disabledColor: widget.disabledColor,
-          uncheckedColor: widget.uncheckedColor,
-          animationController: animationController,
-          strokeWidth: _strokeWidth,
-          size: widget.size,
-        );
-    }
   }
 
   @override
