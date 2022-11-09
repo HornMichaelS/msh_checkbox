@@ -3,10 +3,11 @@ import 'package:msh_checkbox/src/painting/check.dart';
 
 import 'msh_checkbox_base.dart';
 
-class ScaleCheckCheckbox extends StatelessWidget {
+class FillScaleCheckCheckbox extends StatelessWidget {
   final MSHCheckboxBase parent;
 
-  const ScaleCheckCheckbox({Key? key, required this.parent}) : super(key: key);
+  const FillScaleCheckCheckbox({Key? key, required this.parent})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

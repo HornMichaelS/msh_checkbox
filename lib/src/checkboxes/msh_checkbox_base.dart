@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
-import 'package:msh_checkbox/src/checkboxes/fade_checkbox.dart';
-import 'package:msh_checkbox/src/checkboxes/scale_check_checkbox.dart';
-import 'package:msh_checkbox/src/checkboxes/scale_fill_checkbox.dart';
+import 'package:msh_checkbox/src/checkboxes/fill_fade_checkbox.dart';
+import 'package:msh_checkbox/src/checkboxes/fill_scale_check_checkbox.dart';
+import 'package:msh_checkbox/src/checkboxes/fill_scale_color_checkbox.dart';
 import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
 
 class MSHCheckboxBase extends StatelessWidget {
@@ -33,11 +33,11 @@ class MSHCheckboxBase extends StatelessWidget {
       case MSHCheckboxStyle.stroke:
         return StrokeCheckbox(parent: this);
       case MSHCheckboxStyle.fillScaleColor:
-        return ScaleFillCheckbox(parent: this);
+        return FillScaleColorCheckbox(parent: this);
       case MSHCheckboxStyle.fillScaleCheck:
-        return ScaleCheckCheckbox(parent: this);
+        return FillScaleCheckCheckbox(parent: this);
       case MSHCheckboxStyle.fillFade:
-        return FadeCheckbox(parent: this);
+        return FillFadeCheckbox(parent: this);
     }
   }
 }

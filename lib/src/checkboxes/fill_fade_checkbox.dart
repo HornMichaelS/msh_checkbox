@@ -3,10 +3,10 @@ import 'package:msh_checkbox/src/painting/check.dart';
 
 import 'msh_checkbox_base.dart';
 
-class FadeCheckbox extends StatelessWidget {
+class FillFadeCheckbox extends StatelessWidget {
   final MSHCheckboxBase parent;
 
-  const FadeCheckbox({
+  const FillFadeCheckbox({
     Key? key,
     required this.parent,
   }) : super(
