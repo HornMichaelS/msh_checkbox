@@ -136,8 +136,6 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               minHeight: widget.size,
               minWidth: widget.size,
             ),
-            // width: widget.size,
-            // height: widget.size,
             child: MSHCheckboxBase(
               style: widget.style,
               isDisabled: widget.isDisabled,
