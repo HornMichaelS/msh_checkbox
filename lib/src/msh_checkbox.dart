@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/src/checkboxes/msh_checkbox_base.dart';
+import 'package:msh_checkbox/src/msh_checkbox_state.dart';
+import 'package:msh_checkbox/src/msh_color_config.dart';
 import 'msh_checkbox_style.dart';
 
 ///
 /// A circular checkbox which nicely animates changes to its value.
 ///
 /// The checkbox itself does not maintain its [value] as state. Instead, when the state of the checkbox
-/// should change, the widget calls the [onChange] callback. Most widgets that use this checkbox will
+/// should change, the widget calls the [onChanged] callback. Most widgets that use this checkbox will
 /// listen for the [onChanged] callback and rebuild the checkbox with a new [value] to update the
 /// visual appearance of the checkbox.
 ///
 class MSHCheckbox extends StatefulWidget {
-  /// Creates an MSHChecbox.
-  const MSHCheckbox({
+  /// Creates an MSHCheckbox.
+  MSHCheckbox({
     Key? key,
     required this.value,
     this.isDisabled = false,
-    this.checkedColor = Colors.blue,
-    this.uncheckedColor = const Color(0xFFCCCCCC),
-    this.disabledColor = const Color(0xFFCCCCCC),
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
+        this.checkedColor = Colors.blue,
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
+        this.uncheckedColor = const Color(0xFFCCCCCC),
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
+        this.disabledColor = const Color(0xFFCCCCCC),
+    MSHColorConfig? colorConfig,
     this.size = 40,
     this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
-  }) : super(key: key);
+  })  : colorConfig = colorConfig ??
+            MSHColorConfig.fromCheckedUncheckedDisabled(
+              checkedColor: checkedColor,
+              uncheckedColor: uncheckedColor,
+              disabledColor: disabledColor,
+            ),
+        super(key: key);
 
   /// Whether this checkbox is checked.
   final bool value;
@@ -31,14 +43,24 @@ class MSHCheckbox extends StatefulWidget {
   /// Whether the checkbox is disabled.
   final bool isDisabled;
 
-  /// The color of the checkbox when [value] is `true`.
+  /// The color of the checkbox when [value] is `true`. If [colorConfig] is
+  /// specified, this value will be overridden by [MSHColorConfig.onFillColor].
+  @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
   final Color checkedColor;
 
-  /// The color of the checkbox when [value] is `false`.
+  /// The color of the checkbox when [value] is `false`. If [colorConfig] is
+  /// specified, this value will be overridden by [MSHColorConfig.offTintColor].
+  @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
   final Color uncheckedColor;
 
-  /// The color of the checkbox which [isDisabled] is `true`.
+  /// The color of the checkbox when [isDisabled] is `true`. If [colorConfig] is
+  /// specified, this value will be overridden by [MSHColorConfig.disabledTintColor],
+  /// or [MSHColorConfig.disabledFillColor], depending on the style.
+  @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
   final Color disabledColor;
+
+  /// The color configuration of the checkbox.
+  final MSHColorConfig colorConfig;
 
   /// The height and width of the checkbox.
   final double size;
@@ -107,6 +129,11 @@ class _MSHCheckboxState extends State<MSHCheckbox>
 
   @override
   Widget build(BuildContext context) {
+    final state = MSHCheckboxState(
+      isDisabled: widget.isDisabled,
+      style: widget.style,
+    );
+
     return GestureDetector(
       onTap: () {
         if (!widget.isDisabled) {
@@ -123,9 +150,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: widget.isDisabled
-                      ? widget.disabledColor
-                      : widget.uncheckedColor,
+                  color: widget.colorConfig.borderColor(state),
                   width: _strokeWidth,
                 ),
               ),
@@ -139,9 +164,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
             child: MSHCheckboxBase(
               style: widget.style,
               isDisabled: widget.isDisabled,
-              checkedColor: widget.checkedColor,
-              disabledColor: widget.disabledColor,
-              uncheckedColor: widget.uncheckedColor,
+              colorConfig: widget.colorConfig,
               animation: animationController,
               strokeWidth: _strokeWidth,
               size: widget.size,

@@ -32,9 +32,7 @@ class FillScaleCheckCheckbox extends StatelessWidget {
                 width: parent.size + parent.strokeWidth,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: parent.isDisabled
-                      ? parent.disabledColor
-                      : parent.checkedColor,
+                  color: parent.fillColor(),
                 ),
               ),
             ),
@@ -45,7 +43,7 @@ class FillScaleCheckCheckbox extends StatelessWidget {
               ),
               transformAlignment: Alignment.center,
               child: Check(
-                color: Colors.white,
+                color: parent.checkColor(),
                 fillPercentage: 1,
                 size: parent.size * 0.4,
                 strokeWidth: parent.strokeWidth,

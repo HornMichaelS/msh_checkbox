@@ -35,8 +35,10 @@ class _MyAppState extends State<MyApp> {
                   size: 100,
                   value: isChecked,
                   isDisabled: isDisabled,
-                  checkedColor: Colors.blue,
-                  uncheckedColor: Colors.black12,
+                  colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
+                    checkedColor: Colors.green,
+                    uncheckedColor: Colors.grey.shade600,
+                  ),
                   style: style,
                   onChanged: (selected) {
                     setState(() {
@@ -127,7 +129,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-extension StyleName on MSHCheckboxStyle {
+extension _StyleName on MSHCheckboxStyle {
   String name() {
     switch (this) {
       case MSHCheckboxStyle.stroke:

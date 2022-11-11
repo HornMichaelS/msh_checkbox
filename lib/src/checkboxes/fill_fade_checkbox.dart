@@ -34,13 +34,11 @@ class FillFadeCheckbox extends StatelessWidget {
                 width: parent.size + parent.strokeWidth,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: parent.isDisabled
-                      ? parent.disabledColor
-                      : parent.checkedColor,
+                  color: parent.fillColor(),
                 ),
               ),
               Check(
-                color: Colors.white,
+                color: parent.checkColor(),
                 fillPercentage: 1,
                 size: parent.size * 0.4,
                 strokeWidth: parent.strokeWidth,
