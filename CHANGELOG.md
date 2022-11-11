@@ -1,3 +1,18 @@
+## [1.2.0] - 2022-11-11
+
+### Added
+
+* Ability to fully customize coloring of the checkbox, using MSHColorConfig.
+
+### Deprecated
+
+* `MSHCheckbox.checkedColor`
+* `MSHCheckbox.uncheckedColor`
+* `MSHCheckbox.disabledColor`
+
+If you don't want more fine grained control over colors, and still want
+to use the above three properties, you can use `MSHColorConfig.fromCheckedUncheckedDisabled()`.
+
 ## [1.1.2] - 2022-11-08
 
 ### Fixed
@@ -47,6 +62,7 @@
 
 * Initial release
 
+[1.2.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.2...1.2.0
 [1.1.2]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.0.3...1.1.0
