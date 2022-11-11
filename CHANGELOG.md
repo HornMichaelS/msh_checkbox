@@ -1,3 +1,9 @@
+## [1.2.1] - 2022-11-11
+
+### Fixed
+
+* Support button size in README.md
+
 ## [1.2.0] - 2022-11-11
 
 ### Added
@@ -62,6 +68,7 @@ to use the above three properties, you can use `MSHColorConfig.fromCheckedUnchec
 
 * Initial release
 
+[1.2.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.2...1.2.1
 [1.2.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.2...1.2.0
 [1.1.2]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.0...1.1.1
