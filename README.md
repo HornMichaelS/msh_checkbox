@@ -42,7 +42,7 @@ class _ExampleState extends State<Example> {
         size: 60,
         value: isChecked,
         colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-          checked: Colors.blue,
+          checkedColor: Colors.blue,
         ),
         style: MSHCheckboxStyle.stroke,
         onChanged: (selected) {
