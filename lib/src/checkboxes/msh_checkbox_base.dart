@@ -7,26 +7,29 @@ import 'package:msh_checkbox/src/checkboxes/stroke_checkbox.dart';
 import 'package:msh_checkbox/src/msh_checkbox_state.dart';
 
 class MSHCheckboxBase extends StatelessWidget {
-  final MSHCheckboxStyle style;
-  final bool isDisabled;
-  final MSHColorConfig colorConfig;
   final Animation<double> animation;
-  final double strokeWidth;
+  final BuildContext context;
+  final MSHCheckboxStyle style;
+  final MSHColorConfig colorConfig;
+  final bool isDisabled;
   final double size;
+  final double strokeWidth;
 
   MSHCheckboxState get state => MSHCheckboxState(
+        context: context,
         isDisabled: isDisabled,
         style: style,
       );
 
   const MSHCheckboxBase({
     Key? key,
-    required this.style,
-    required this.isDisabled,
-    required this.colorConfig,
     required this.animation,
-    required this.strokeWidth,
+    required this.colorConfig,
+    required this.context,
+    required this.isDisabled,
     required this.size,
+    required this.strokeWidth,
+    required this.style,
   }) : super(key: key);
 
   @override

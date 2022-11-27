@@ -35,7 +35,7 @@ class MSHColorConfig {
   /// Presents a simplified interface for constructing an [MSHColorConfig].
   factory MSHColorConfig.fromCheckedUncheckedDisabled({
     /// The color of the check and border or fill when [MSHCheckbox.value] is `true`.
-    Color checkedColor = Colors.blue,
+    Color? checkedColor,
 
     /// The color of the checkbox when [MSHCheckbox.value] is `false`.
     Color uncheckedColor = const Color(0xFFCCCCCC),
@@ -46,11 +46,18 @@ class MSHColorConfig {
       MSHColorConfig(
         borderColor: (state) =>
             state.isDisabled ? disabledColor : uncheckedColor,
-        tintColor: (state) => state.isDisabled ? disabledColor : checkedColor,
-        fillColor: (state) => state.isDisabled ? disabledColor : checkedColor,
+        tintColor: (state) => state.isDisabled
+            ? disabledColor
+            : (checkedColor ?? Theme.of(state.context).toggleableActiveColor),
+        fillColor: (state) => state.isDisabled
+            ? disabledColor
+            : (checkedColor ?? Theme.of(state.context).toggleableActiveColor),
         checkColor: (state) {
           if (state.style == MSHCheckboxStyle.stroke) {
-            return state.isDisabled ? disabledColor : checkedColor;
+            return state.isDisabled
+                ? disabledColor
+                : (checkedColor ??
+                    Theme.of(state.context).toggleableActiveColor);
           } else {
             return Colors.white;
           }
@@ -62,16 +69,16 @@ class MSHColorConfig {
   }
 
   static Color _defaultTintColor(MSHCheckboxState state) {
-    return Colors.blue;
+    return Theme.of(state.context).toggleableActiveColor;
   }
 
   static Color _defaultFillColor(MSHCheckboxState state) {
-    return Colors.blue;
+    return Theme.of(state.context).toggleableActiveColor;
   }
 
   static Color _defaultCheckColor(MSHCheckboxState state) {
     if (state.style == MSHCheckboxStyle.stroke) {
-      return Colors.blue;
+      return Theme.of(state.context).toggleableActiveColor;
     } else {
       return Colors.white;
     }
