@@ -25,7 +25,7 @@ class MSHCheckbox extends StatefulWidget {
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
         this.disabledColor = const Color(0xFFCCCCCC),
     MSHColorConfig? colorConfig,
-    this.size = 40,
+    this.size = 18,
     this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
