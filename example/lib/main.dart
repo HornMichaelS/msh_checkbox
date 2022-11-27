@@ -29,6 +29,24 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(title: const Text('MSHCheckbox Example')),
         body: Column(
           children: [
+            const SizedBox(height: 12),
+            Center(
+              child: MSHCheckbox(
+                label: 'Lorem ipsum dolor sit amets',
+                value: isChecked,
+                isDisabled: isDisabled,
+                colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
+                  checkedColor: Colors.green,
+                  uncheckedColor: Colors.grey.shade600,
+                ),
+                style: style,
+                onChanged: (selected) {
+                  setState(() {
+                    isChecked = selected;
+                  });
+                },
+              ),
+            ),
             Expanded(
               child: Center(
                 child: MSHCheckbox(

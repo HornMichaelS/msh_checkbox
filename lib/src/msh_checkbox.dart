@@ -17,6 +17,9 @@ class MSHCheckbox extends StatefulWidget {
   MSHCheckbox({
     Key? key,
     required this.value,
+    this.label,
+    this.labelSpacing = 12,
+    this.labelStyle,
     this.isDisabled = false,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
         this.checkedColor,
@@ -73,6 +76,15 @@ class MSHCheckbox extends StatefulWidget {
 
   /// Called when the value of the checkbox should change.
   final void Function(bool selected) onChanged;
+
+  /// Label of checkbox
+  final String? label;
+
+  /// Text stye of label checkbox
+  final TextStyle? labelStyle;
+
+  /// Spacing between checkbox and label
+  final double labelSpacing;
 
   @override
   State<MSHCheckbox> createState() => _MSHCheckboxState();
@@ -135,7 +147,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
       style: widget.style,
     );
 
-    return GestureDetector(
+    final checkbox = GestureDetector(
       onTap: () {
         if (!widget.isDisabled) {
           widget.onChanged(!widget.value);
@@ -175,6 +187,25 @@ class _MSHCheckboxState extends State<MSHCheckbox>
         ],
       ),
     );
+
+    if (widget.label != null) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          checkbox,
+          SizedBox(width: widget.labelSpacing),
+          Flexible(
+            child: Text(
+              widget.label!,
+              style: widget.labelStyle,
+            ),
+          ),
+        ],
+      );
+    } else {
+      return checkbox;
+    }
   }
 
   @override
