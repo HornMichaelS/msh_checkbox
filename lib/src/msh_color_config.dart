@@ -18,7 +18,7 @@ class MSHColorConfig {
   /// The background fill color for the checkbox when [MSHCheckbox.value] is `true`.
   final ColorFromState fillColor;
 
-  /// The color of the checkmark.
+  /// The color of the check mark.
   final ColorFromState checkColor;
 
   /// Construct an MSHColorConfig
