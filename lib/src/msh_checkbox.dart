@@ -19,7 +19,7 @@ class MSHCheckbox extends StatefulWidget {
     required this.value,
     this.isDisabled = false,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.checkedColor = Colors.blue,
+        this.checkedColor,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
         this.uncheckedColor = const Color(0xFFCCCCCC),
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
@@ -46,7 +46,7 @@ class MSHCheckbox extends StatefulWidget {
   /// The color of the checkbox when [value] is `true`. If [colorConfig] is
   /// specified, this value will be overridden by [MSHColorConfig.onFillColor].
   @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-  final Color checkedColor;
+  final Color? checkedColor;
 
   /// The color of the checkbox when [value] is `false`. If [colorConfig] is
   /// specified, this value will be overridden by [MSHColorConfig.offTintColor].
@@ -130,6 +130,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
   @override
   Widget build(BuildContext context) {
     final state = MSHCheckboxState(
+      context: context,
       isDisabled: widget.isDisabled,
       style: widget.style,
     );
@@ -162,6 +163,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               minWidth: widget.size,
             ),
             child: MSHCheckboxBase(
+              context: context,
               style: widget.style,
               isDisabled: widget.isDisabled,
               colorConfig: widget.colorConfig,
