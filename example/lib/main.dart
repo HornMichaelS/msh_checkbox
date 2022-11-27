@@ -32,7 +32,14 @@ class _MyAppState extends State<MyApp> {
             const SizedBox(height: 12),
             Center(
               child: MSHCheckbox(
-                label: 'Lorem ipsum dolor sit amets',
+                label: (checked) => Text(
+                  'Lorem ipsum dolor sit amets',
+                  style: TextStyle(
+                    decoration: checked ? TextDecoration.lineThrough : null,
+                    color: checked ? Colors.black45 : null,
+                  ),
+                ),
+                allowTapOnLabel: true,
                 value: isChecked,
                 isDisabled: isDisabled,
                 colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(

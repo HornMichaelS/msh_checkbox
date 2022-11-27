@@ -19,7 +19,7 @@ class MSHCheckbox extends StatefulWidget {
     required this.value,
     this.label,
     this.labelSpacing = 12,
-    this.labelStyle,
+    this.allowTapOnLabel = false,
     this.isDisabled = false,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
         this.checkedColor,
@@ -78,13 +78,13 @@ class MSHCheckbox extends StatefulWidget {
   final void Function(bool selected) onChanged;
 
   /// Label of checkbox
-  final String? label;
-
-  /// Text stye of label checkbox
-  final TextStyle? labelStyle;
+  final Widget Function(bool checked)? label;
 
   /// Spacing between checkbox and label
   final double labelSpacing;
+
+  /// Allow changing the state when label is tapped
+  final bool allowTapOnLabel;
 
   @override
   State<MSHCheckbox> createState() => _MSHCheckboxState();
@@ -139,6 +139,12 @@ class _MSHCheckboxState extends State<MSHCheckbox>
     }
   }
 
+  void _toggleCheckbox() {
+    if (!widget.isDisabled) {
+      widget.onChanged(!widget.value);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = MSHCheckboxState(
@@ -148,11 +154,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
     );
 
     final checkbox = GestureDetector(
-      onTap: () {
-        if (!widget.isDisabled) {
-          widget.onChanged(!widget.value);
-        }
-      },
+      onTap: _toggleCheckbox,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -195,10 +197,10 @@ class _MSHCheckboxState extends State<MSHCheckbox>
         children: [
           checkbox,
           SizedBox(width: widget.labelSpacing),
-          Flexible(
-            child: Text(
-              widget.label!,
-              style: widget.labelStyle,
+          GestureDetector(
+            onTap: () => widget.allowTapOnLabel ? _toggleCheckbox() : null,
+            child: Flexible(
+              child: widget.label!(widget.value),
             ),
           ),
         ],
