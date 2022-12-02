@@ -28,7 +28,7 @@ class MSHCheckbox extends StatefulWidget {
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
         this.disabledColor = const Color(0xFFCCCCCC),
     MSHColorConfig? colorConfig,
-    this.size = 18,
+    this.size = 20,
     this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
@@ -197,9 +197,9 @@ class _MSHCheckboxState extends State<MSHCheckbox>
         children: [
           checkbox,
           SizedBox(width: widget.labelSpacing),
-          GestureDetector(
-            onTap: () => widget.allowTapOnLabel ? _toggleCheckbox() : null,
-            child: Flexible(
+          Flexible(
+            child: GestureDetector(
+              onTap: () => widget.allowTapOnLabel ? _toggleCheckbox() : null,
               child: widget.label!(widget.value),
             ),
           ),
