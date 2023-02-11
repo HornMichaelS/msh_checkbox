@@ -36,8 +36,7 @@ class _MyAppState extends State<MyApp> {
                   value: isChecked,
                   isDisabled: isDisabled,
                   colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-                    checkedColor: Colors.green,
-                    uncheckedColor: Colors.grey.shade600,
+                    checkedColor: Colors.blue,
                   ),
                   style: style,
                   onChanged: (selected) {
