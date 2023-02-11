@@ -1,4 +1,10 @@
-## [2.0.0] - 2022-11
+## [2.0.1] - 2023-02-11
+
+### Fixed
+
+* Replaced usages of APIs which were deprecated in Flutter 3.7
+
+## [2.0.0] - 2022-12-14
 
 ### Breaking
 
@@ -79,6 +85,7 @@ to use the above three properties, you can use `MSHColorConfig.fromCheckedUnchec
 
 * Initial release
 
+[2.0.1]: https://github.com/HornMichaelS/msh_checkbox/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.2.1...2.0.0
 [1.2.1]: https://github.com/HornMichaelS/msh_checkbox/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/HornMichaelS/msh_checkbox/compare/1.1.2...1.2.0
