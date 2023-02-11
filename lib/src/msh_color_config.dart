@@ -48,16 +48,15 @@ class MSHColorConfig {
             state.isDisabled ? disabledColor : uncheckedColor,
         tintColor: (state) => state.isDisabled
             ? disabledColor
-            : (checkedColor ?? Theme.of(state.context).toggleableActiveColor),
+            : (checkedColor ?? _defaultToggleableColor(state)),
         fillColor: (state) => state.isDisabled
             ? disabledColor
-            : (checkedColor ?? Theme.of(state.context).toggleableActiveColor),
+            : (checkedColor ?? _defaultToggleableColor(state)),
         checkColor: (state) {
           if (state.style == MSHCheckboxStyle.stroke) {
             return state.isDisabled
                 ? disabledColor
-                : (checkedColor ??
-                    Theme.of(state.context).toggleableActiveColor);
+                : (checkedColor ?? _defaultToggleableColor(state));
           } else {
             return Colors.white;
           }
@@ -69,18 +68,26 @@ class MSHColorConfig {
   }
 
   static Color _defaultTintColor(MSHCheckboxState state) {
-    return Theme.of(state.context).toggleableActiveColor;
+    return _defaultToggleableColor(state);
   }
 
   static Color _defaultFillColor(MSHCheckboxState state) {
-    return Theme.of(state.context).toggleableActiveColor;
+    return _defaultToggleableColor(state);
   }
 
   static Color _defaultCheckColor(MSHCheckboxState state) {
     if (state.style == MSHCheckboxStyle.stroke) {
-      return Theme.of(state.context).toggleableActiveColor;
+      return _defaultToggleableColor(state);
     } else {
       return Colors.white;
     }
+  }
+
+  static Color _defaultToggleableColor(MSHCheckboxState state) {
+    return Theme.of(state.context)
+            .checkboxTheme
+            .fillColor
+            ?.resolve({MaterialState.selected}) ??
+        Theme.of(state.context).colorScheme.secondary;
   }
 }
