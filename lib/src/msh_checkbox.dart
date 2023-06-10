@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:msh_checkbox/src/checkboxes/msh_checkbox_base.dart';
 import 'package:msh_checkbox/src/msh_checkbox_state.dart';
 import 'package:msh_checkbox/src/msh_color_config.dart';
+import 'enum/check_box_shape.dart';
 import 'msh_checkbox_style.dart';
 
 ///
@@ -19,13 +20,15 @@ class MSHCheckbox extends StatefulWidget {
     required this.value,
     this.isDisabled = false,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.checkedColor,
+    this.checkedColor,
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.uncheckedColor = const Color(0xFFCCCCCC),
+    this.uncheckedColor = const Color(0xFFCCCCCC),
     @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.disabledColor = const Color(0xFFCCCCCC),
+    this.disabledColor = const Color(0xFFCCCCCC),
     MSHColorConfig? colorConfig,
     this.size = 18,
+    this.radius = 7,
+    this.shape = CheckBoxShape.circle,
     this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
@@ -39,6 +42,10 @@ class MSHCheckbox extends StatefulWidget {
 
   /// Whether this checkbox is checked.
   final bool value;
+
+  final CheckBoxShape shape;
+
+  final double radius;
 
   /// Whether the checkbox is disabled.
   final bool isDisabled;
@@ -149,7 +156,10 @@ class _MSHCheckboxState extends State<MSHCheckbox>
             width: widget.size + _strokeWidth,
             child: Container(
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                shape: widget.shape.getShape,
+                borderRadius: widget.shape == CheckBoxShape.rectangle
+                    ? BorderRadius.circular(widget.radius)
+                    : null,
                 border: Border.all(
                   color: widget.colorConfig.borderColor(state),
                   width: _strokeWidth,
@@ -166,8 +176,10 @@ class _MSHCheckboxState extends State<MSHCheckbox>
               context: context,
               style: widget.style,
               isDisabled: widget.isDisabled,
+              radius: widget.radius,
               colorConfig: widget.colorConfig,
               animation: animationController,
+              shape: widget.shape.getShape,
               strokeWidth: _strokeWidth,
               size: widget.size,
             ),

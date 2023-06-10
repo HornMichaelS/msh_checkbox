@@ -13,7 +13,9 @@ class MSHCheckboxBase extends StatelessWidget {
   final MSHColorConfig colorConfig;
   final bool isDisabled;
   final double size;
+  final double radius;
   final double strokeWidth;
+  final BoxShape shape;
 
   MSHCheckboxState get state => MSHCheckboxState(
         context: context,
@@ -27,7 +29,9 @@ class MSHCheckboxBase extends StatelessWidget {
     required this.colorConfig,
     required this.context,
     required this.isDisabled,
+    required this.radius,
     required this.size,
+    required this.shape,
     required this.strokeWidth,
     required this.style,
   }) : super(key: key);
