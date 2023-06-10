@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool isChecked = false;
   bool isDisabled = false;
-  MSHCheckboxStyle style = MSHCheckboxStyle.stroke;
+  MSHCheckboxStyle style = MSHCheckboxStyle.fillFade;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,8 @@ class _MyAppState extends State<MyApp> {
                     checkedColor: Colors.blue,
                   ),
                   style: style,
+                  shape: CheckBoxShape.rectangle,
+                  radius: 15,
                   onChanged: (selected) {
                     setState(() {
                       isChecked = selected;

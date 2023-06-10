@@ -11,6 +11,7 @@ class FillScaleCheckCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("FillScaleCheckCheckbox");
     final fadeAnimation = parent.animation.drive(CurveTween(
       curve: Curves.easeOutCubic,
     ));
@@ -31,7 +32,10 @@ class FillScaleCheckCheckbox extends StatelessWidget {
                 height: parent.size + parent.strokeWidth,
                 width: parent.size + parent.strokeWidth,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                  borderRadius: parent.shape == BoxShape.rectangle
+                      ? BorderRadius.circular(parent.radius)
+                      : null,
+                  shape: BoxShape.rectangle,
                   color: parent.fillColor(),
                 ),
               ),
